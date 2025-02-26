@@ -3,7 +3,7 @@ import Logo from "./Logo";
 import MainNav from "./MainNav";
 
 const StyledSidebar = styled.aside`
-  background-color: var(--color-grey-0);
+  background-color: var(--color-grey-50);
   padding: 3.0rem 2.1rem;
   border-right: 1px solid var(--color-grey-100);
   display: flex;

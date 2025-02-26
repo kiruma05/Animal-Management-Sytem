@@ -74,6 +74,30 @@
       "password": "11",
       "confirmPassword": "11",
       "role": "supervisor"
+    },
+    {
+      "fullName": "juma alex",
+      "email": "alex@narco.go.tz",
+      "password": "alex123",
+      "confirmPassword": "alex123",
+      "role": "managing director",
+      "id": "48bc"
+    },
+    {
+      "fullName": "amariii masudi",
+      "email": "amar@narco.go.tz",
+      "password": "amari123",
+      "confirmPassword": "amari123",
+      "role": "managing director",
+      "id": "53e9"
+    },
+    {
+      "id": "19db",
+      "fullName": "kiruma_jr",
+      "email": "kiruma@narco.co.tz",
+      "password": "kiruma123",
+      "confirmPassword": "kiruma123",
+      "role": "admin"
     }
   ],
   "sessions": [

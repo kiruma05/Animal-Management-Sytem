@@ -23,7 +23,7 @@ const StyledAppLayout = styled.div`
 `;
 
 const Main = styled.main`
-  background-color: var(--color-grey-50);
+  background-color: var(--color-grey-0);
   padding: 2rem 2.4rem; /* Adjust padding for better spacing */
   overflow: auto; /* Allows scrolling if content overflows */
 

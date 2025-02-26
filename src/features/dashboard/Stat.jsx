@@ -30,9 +30,9 @@ const Icon = styled.div`
 
 const Title = styled.h2`
   align-self: end;
-  font-size: 1.2rem;
+  font-size: 2.2rem;
   text-transform: uppercase;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.3px;
   font-weight: 600;
   color: var(--color-grey-500);
 `;

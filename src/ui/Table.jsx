@@ -2,8 +2,8 @@ import { useContext, createContext } from "react";
 import styled from "styled-components";
 
 const TableWrapper = styled.div`
-  overflow-x: auto; // Enable horizontal scrolling for small devices
-  width: 100%; // Full width of the container
+  overflow-y: auto; // Enable vertical scrolling for small devices
+  width: 450%; // Full width of the container
 `;
 
 const StyledTable = styled.div`
@@ -32,6 +32,7 @@ const StyledTable = styled.div`
 `;
 
 const CommonRow = styled.div`
+
   display: grid;
   grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr; // Adjust columns as needed
   column-gap: 2.4rem;
@@ -46,7 +47,8 @@ const CommonRow = styled.div`
 `;
 
 const StyledHeader = styled(CommonRow)`
-  padding: 1.6rem 2.4rem;
+  display: grid
+  padding: 0.6rem 0.4rem;
   background-color: var(--color-grey-0);
   border-bottom: 1px solid var(--color-green-700);
   text-transform: uppercase;
@@ -67,7 +69,8 @@ const StyledBody = styled.section`
 `;
 
 const StyledRow = styled(CommonRow)`
-  padding: 1.2rem 2.4rem;
+  display: grid
+  padding: 1.8rem 2.4rem;
 
   &:not(:last-child) {
     border-bottom: 1px solid var(--color-grey-100);

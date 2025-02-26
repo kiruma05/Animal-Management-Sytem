@@ -1,115 +1,127 @@
-import { useState } from "react";
-import styled from "styled-components";
-import CreateUserForm from "./CreateUserForm";
-import { UserDeleteUser } from "./useDeleteUser";
-import Table from "../../ui/Table";
-//import { useCreateUser } from "./useCreateUser";
+// import { useState } from "react";
+// import styled from "styled-components";
+// import CreateUserForm from "./CreateUserForm";
+// import { UserDeleteUser } from "./useDeleteUser";
+// import Table from "../../ui/Table";
 
-// const TableRow = styled.div`
-//   display: grid;
-//   grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr;
-//   column-gap: 2.4rem;
-//   align-items: center;
-//   padding: 1.4rem 2.4rem;
+// // ✅ Define styled components for UI elements
+// const StyledUser = styled.div`
+//   font-size: 1.6rem;
+//   font-weight: 600;
+//   color: var(--color-grey-600);
+//   font-family: "Sono";
+// `;
 
-//   &:not(:last-child) {
-//     border-bottom: 1px solid var(--color-grey-100);
+// const StyledEmail = styled.div`
+//   font-size: 1.6rem;
+//   font-weight: 100;
+//   font-family: "italic";
+//   color: var(--color-green-700);
+// `;
+
+// const StyledRole = styled.div`
+//   font-size: 1.6rem;
+//   font-weight: 600;
+//   color: var(--color-grey-800);
+//   font-family: "sono";
+// `;
+
+// const EditButton = styled.button`
+//   border: none;
+//   border-radius: 4px;
+//   padding: 0.8rem 1.2rem;
+//   font-size: 1rem;
+//   font-weight: 600;
+//   color: #fff;
+//   background-color: #28a745;
+//   cursor: pointer;
+//   margin-right: 0.8rem;
+//   transition: background-color 0.3s ease;
+
+//   &:disabled {
+//     cursor: not-allowed;
+//     opacity: 0.6;
 //   }
 // `;
 
-const Img = styled.img`
-  display: block;
-  width: 6.4rem;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
-  object-position: center;
-  transform: scale(1.5) translateX(-7px);
-`;
+// const Img = styled.img`
+//   display: block;
+//   width: 6.4rem;
+//   aspect-ratio: 3 / 2;
+//   object-fit: cover;
+//   object-position: center;
+//   transform: scale(1.5) translateX(-7px);
+// `;
 
-const User = styled.div`
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--color-grey-600);
-  font-family: "Sono";
-`;
+// function UserRow({ user }) {
+//   const [showForm, setShowForm] = useState(false);
+//   const { id, fullName, email, role, submitter } = user; // ✅ Removed unused variables
 
-const Email = styled.div`
-  font-size: 1.6rem;
-  font-weight: 100;
-  font-family: "italic";
-  color: var(--color-green-700);
-`;
+//   return (
+//     <>
+//       <Table.Row>
+//         <StyledUser>{fullName}</StyledUser>
+//         <StyledEmail>{email}</StyledEmail>
+//         <StyledRole>{role}</StyledRole>
+//         <StyledUser>{submitter}</StyledUser> 
+//         <div>
+//           <EditButton onClick={() => setShowForm((show) => !show)}>View</EditButton>
+//         </div>
+//       </Table.Row>
+//       {showForm && <CreateUserForm userToEdit={user} />}
+//     </>
+//   );
+// }
 
-const Role = styled.div`
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--color-grey-800);
-  font-family: "sono";
-  //color: var(--color-yellow-700);
-  //color-brand-200:
-`;
+// export default UserRow;
 
-const EditButton = styled.button`
-  border: none;
-  border-radius: 4px;
-  padding: 0.8rem 1.2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
-  background-color: #28a745; 
-  cursor: pointer;
-  margin-right: 0.8rem;
-  transition: background-color 0.3s ease;
 
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
+
+
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+// Styled Components
+const TableRow = styled.tr`
+  &:hover {
+    background: #f1f1f1;
+    transition: 0.3s;
   }
 `;
 
-const DeleteButton = styled.button`
-  border: none;
-  border-radius: 4px;
-  padding: 0.8rem 1.2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
-  background-color: #dc3545; 
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
+const TableCell = styled.td`
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  white-space: nowrap;
 `;
 
+const ViewButton = styled(Link)`
+  padding: 8px 16px;
+  background-color: var(--color-grey-400);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  &:hover {
+    background: #218838;
+  }
+`;
 
 function UserRow({ user }) {
-  const [showForm, setShowForm] = useState(false);
-  const { isDeleting, deleteUser } = UserDeleteUser();
-  
-
-  const { id, fullName, email, password, role, image } = user;
-
-  
-
-  
+  if (!user) return null;
 
   return (
-    <>
-      <Table.Row>
-        <Img src={image} />
-        <User>{fullName}</User>
-        <Email>{email}</Email>
-        <Role>{role}</Role>
-        <div>
-          <EditButton onClick={() => setShowForm((show) => !show)}>Edit</EditButton>
-          <DeleteButton onClick={() => deleteUser(id)} disabled={isDeleting}>Delete</DeleteButton>
-        </div>
-      </Table.Row>
-      {showForm && <CreateUserForm userToEdit={user} />}
-    </>
+    <TableRow>
+      <TableCell>{user.text_question_types?.Name || "No Name"}</TableCell>
+      <TableCell>{user.numerical_question_types?.animal_code || "N/A"}</TableCell>
+      <TableCell>{user.numerical_question_types?.select_one_autocomplete || "N/A"}</TableCell>
+      <TableCell>{user.__system?.submitterName || "Unknown"}</TableCell>
+      <TableCell>
+        <ViewButton to={`/animals/${user.__id}`}>View</ViewButton>
+      </TableCell>
+    </TableRow>
   );
 }
 
